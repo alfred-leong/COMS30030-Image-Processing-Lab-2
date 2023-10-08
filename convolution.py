@@ -89,9 +89,11 @@ gray_image = cv2.cvtColor( image, cv2.COLOR_BGR2GRAY );
 gray_image = gray_image.astype(np.float32)
 
 # apply Gaussian blur
-carBlurred = GaussianBlur(gray_image,23);
+# carBlurred = GaussianBlur(gray_image,23);
+median_blur_image = cv2.medianBlur(gray_image, 5)
+
 # save image
-cv2.imwrite( "blur.jpg", carBlurred );
+cv2.imwrite( "medianblur.jpg", median_blur_image );
 
 
 

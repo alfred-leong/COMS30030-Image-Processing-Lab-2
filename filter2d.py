@@ -89,11 +89,13 @@ if not (type(image) is np.ndarray):
     sys.exit(1)
 
 # CONVERT COLOUR, BLUR AND SAVE
-gray_image = cv2.cvtColor( image, cv2.COLOR_BGR2GRAY );
+gray_image = cv2.cvtColor( image, cv2.COLOR_BGR2GRAY )
 gray_image = gray_image.astype(np.float32)
 
 # apply Gaussian blur
-carBlurred = GaussianBlur(gray_image,23);
+carBlurred = GaussianBlur(gray_image,23)
+detail = gray_image - carBlurred
+sharpened = gray_image + 3.0 * detail
 # save image
-cv2.imwrite( "blur.jpg", carBlurred );
+cv2.imwrite( "sharpened1.jpg", sharpened )
 
